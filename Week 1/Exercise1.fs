@@ -1,4 +1,4 @@
-module Exercise1
+module Exercise1 //No errors
 
 //Exercise 1
 let rec fact(n) =
