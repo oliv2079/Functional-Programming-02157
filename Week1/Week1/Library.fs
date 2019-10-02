@@ -1,4 +1,4 @@
-module Exercise1 //No errors
+﻿module Week1 //No errors
 
 //Exercise 1
 let rec fact(n) =
@@ -67,3 +67,5 @@ let rec mul(l1,l2) =
 
 //c
 //wut?
+
+

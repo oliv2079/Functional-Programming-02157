@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Oliver Rutving\\Documents\\GitHub\\Functional-Programming-02157\\Week3\\Week3\\Week3.fsproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Oliver Rutving\\Documents\\GitHub\\Functional-Programming-02157\\Week3\\Week3\\Week3.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Oliver Rutving\\Documents\\GitHub\\Functional-Programming-02157\\Week3\\Week3\\Week3.fsproj",
+        "projectName": "Week3",
+        "projectPath": "C:\\Users\\Oliver Rutving\\Documents\\GitHub\\Functional-Programming-02157\\Week3\\Week3\\Week3.fsproj",
+        "packagesPath": "C:\\Users\\Oliver Rutving\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Oliver Rutving\\Documents\\GitHub\\Functional-Programming-02157\\Week3\\Week3\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Oliver Rutving\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.6.2, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
