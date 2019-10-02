@@ -1,3 +1,4 @@
 ﻿module MandatoryAssignment1
 
-let f n = n;;
+    let f n = n;;
+    
