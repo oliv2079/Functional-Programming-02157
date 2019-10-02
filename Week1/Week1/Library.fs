@@ -1,10 +1,10 @@
 ﻿module Week1 //No errors
 
 //Exercise 1
-let rec fact(n) =
+let rec fact n =
     match n with
-        | 0 -> 0
-        | n -> n+fact(n-1);;
+    | 0 -> 0
+    | n -> n+fact (n-1);;
         //fact(5);;
 
 //Exercise 2

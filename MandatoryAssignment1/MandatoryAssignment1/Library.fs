@@ -1,5 +1,3 @@
-﻿namespace MandatoryAssignment1
+﻿module MandatoryAssignment1
 
-module Say =
-    let hello name =
-        printfn "Hello %s" name
+let f n = n;;
