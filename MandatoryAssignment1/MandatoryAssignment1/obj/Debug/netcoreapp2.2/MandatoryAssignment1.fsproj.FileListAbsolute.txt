@@ -1,0 +1,10 @@
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\bin\Debug\netcoreapp2.2\MandatoryAssignment1.deps.json
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\bin\Debug\netcoreapp2.2\MandatoryAssignment1.runtimeconfig.json
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\bin\Debug\netcoreapp2.2\MandatoryAssignment1.runtimeconfig.dev.json
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\bin\Debug\netcoreapp2.2\MandatoryAssignment1.dll
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\bin\Debug\netcoreapp2.2\MandatoryAssignment1.pdb
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\obj\Debug\netcoreapp2.2\MandatoryAssignment1.fsprojAssemblyReference.cache
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\obj\Debug\netcoreapp2.2\MandatoryAssignment1.AssemblyInfoInputs.cache
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\obj\Debug\netcoreapp2.2\MandatoryAssignment1.AssemblyInfo.fs
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\obj\Debug\netcoreapp2.2\MandatoryAssignment1.dll
+c:\Users\Oliver Rutving\Documents\GitHub\Functional-Programming-02157\MandatoryAssignment1\MandatoryAssignment1\obj\Debug\netcoreapp2.2\MandatoryAssignment1.pdb
