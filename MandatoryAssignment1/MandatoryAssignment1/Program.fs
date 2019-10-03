@@ -1,4 +1,6 @@
-﻿module MandatoryAssignment1 =
+﻿open System
+
+module MandatoryAssignment1 =
 
     // Flight travellers may check-in the pieces of luggage, that should follow them on their journey, 
     // also when it contains multiple stops. A piece of luggage is marked with an identiﬁcation (type Lid) 
@@ -9,19 +11,22 @@
     // routes of all pieces of luggage leaving some airport.
 
     // This is captured by the type declarations:
-    type Lid = string 
+
+    type Lid = string
     type Flight = string 
     type Airport = string
+
+    type Route = (Flight * Airport) list
+    type LuggageCatalogue = (Lid * Route) list;;
+
     
-    type Route = (Flight * Airport) list 
-    type LuggageCatalogue = (Lid * Route) list
-    type findRoute = Lid*LuggageCatalogue -> Route;; 
 
     // An example of a Luggage Catalogue is:
-    let LuggageCatalogue = [
+    let lc1 = [
             ("DL 016-914", [("DL 189","ATL"); ("DL 124","BRU"); ("SN 733","CPH")]); 
             ("SK 222-142", [("SK 208","ATL"); ("DL 124","BRU"); ("SK 122","JFK")]);
         ];;    
+
     // where ﬁrst element in the list describes that the piece of luggage with identiﬁcation "DL 016-914” 
     // is following a route, where it is ﬁrst ﬂown to Atlanta ("ATL”) with ﬂight "DL 189”, then ﬂown to 
     // Bruxelles "BRU” with ﬂight "DL 124”, and so on.
@@ -30,34 +35,35 @@
     // Declare a function findRoute: Lid*LuggageCatalogue -> Route, that ﬁnds the route for a given 
     // luggage identiﬁcation in a luggage catalogue. A suitable exception should be raise if a route is 
     // not found.
-
-    let rec findRoute Lid = function
-        | (Lid',Route)::_ when Lid=Lid' -> Route
-        | _::rest           -> findRoute Lid rest
-        | _                             -> failwith(Lid + " is an unknown luggage ID");;
     
-        // test:
-        // findRoute "DL 016-914" LuggageCatalogue;; // ~> [("DL 189", "ATL"); ("DL 124", "BRU"); ("SN 733", "CPH")]
-        // findRoute "SK 222-142" LuggageCatalogue;; ~> [("SK 208", "ATL"); ("DL 124", "BRU"); ("SK 122", "JFK")]
-        // findRoute "SK 222-143" LuggageCatalogue;; ~> System.Exception: SK 222-143 is an unknown luggage ID
+
+    let rec findRoute l = function
+        | (l',r)::_ when l=l'   -> r
+        | _::rest               -> findRoute l rest
+        | _                     -> failwith(l + " is an unknown luggage ID");;
+    
+        // test: (ignore)
+        // findRoute "DL 016-914" lc1;; // ~> [("DL 189", "ATL"); ("DL 124", "BRU"); ("SN 733", "CPH")]
+        // findRoute "SK 222-142" lc1;; ~> [("SK 208", "ATL"); ("DL 124", "BRU"); ("SK 122", "JFK")]
+        // findRoute "SK 222-143" lc1;; ~> System.Exception: SK 222-143 is an unknown luggage ID
 
     // 2
     // Declare a function inRoute: Flight -> Route -> bool, 
     // that decides whether a given ﬂight occurs in a route.
+    
+    let rec inRoute f = function
+        | (l', r'::tail)::rest -> 
+            let (f', _) = r'
+            if f'=f then true else (inRoute f ((l',tail)::rest))
+        | _::rest              -> inRoute f rest
+        | _                    -> false;;
 
-    let rec inRoute Flight = function
-        | (Lid', Route'::tail)::rest -> 
-            let (Flight', _) = Route'
-            if Flight'=Flight then true else (inRoute Flight ((Lid',tail)::rest))
-        | _::rest                     -> inRoute Flight rest
-        | _                           -> false;;
 
-
-        // test:
-        // inRoute "DL 189" LuggageCatalogue;; ~> val it : bool = true
-        // inRoute "DL 124" LuggageCatalogue;; ~> val it : bool = true
-        // inRoute "DL 125" LuggageCatalogue;; ~> val it : bool = false
-        // inRoute "SK 122" LuggageCatalogue;; ~> val it : bool = true
+        // test: (ignore)
+        // inRoute "DL 189" lc1;; ~> val it : bool = true
+        // inRoute "DL 124" lc1;; ~> val it : bool = true
+        // inRoute "DL 125" lc1;; ~> val it : bool = false
+        // inRoute "SK 122" lc1;; ~> val it : bool = true
 
     // 3
     // Declare a function withFlight f lc, where f is a ﬂight and lc is a luggage catalogue. 
@@ -65,6 +71,23 @@
     // luggage that should travel with f according to lc. The sequence in which the identiﬁers occur 
     // in the list is of no concern. For the above example, both "DL 016-914” and "SK 222-142” should 
     // travel with the ﬂight "DL 124”.
+
+    let rec withFlight f lc =
+        match lc with
+        | (l', r'::tail)::rest ->
+            let (f',_)=r'
+            if f'=f then ([l'] @ withFlight f ((l',tail)::rest)) else (withFlight f ((l',tail)::rest))
+        | _::rest              -> withFlight f rest
+        | _                    -> [];;
+
+        // test: (ignore)
+        // withFlight "DL 124" lc1;; ~> val it : string list = ["DL 016-914"; "SK 222-142"]
+        // withFlight "SK 208" lc1;; ~> val it : string list = ["SK 222-142"]
+        // withFlight "SK 209" lc1;; ~> val it : string list = []
+        // withFlight "SN 733" lc1;; ~> val it : string list = ["DL 016-914"]
+    
+    
+
 
     
 
