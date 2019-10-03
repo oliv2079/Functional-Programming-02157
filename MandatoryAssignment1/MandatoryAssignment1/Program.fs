@@ -1,4 +1,6 @@
-﻿// Flight travellers may check-in the pieces of luggage, that should follow them on their journey, 
+﻿////------TASK 2------////
+
+// Flight travellers may check-in the pieces of luggage, that should follow them on their journey, 
 // also when it contains multiple stops. A piece of luggage is marked with an identiﬁcation (type Lid) 
 // by the start of the journey and that identiﬁcation is associated with the route (type Route) of the 
 // journey. A route is a list of pairs identifying the ﬂights (type Flight) and airports (type Airport) 
@@ -218,3 +220,57 @@ let rec toArrivalCatalogue lc =
 // ("CPH", ["DL 016-914"])]
 // with luggage catalogue lc1
 let toArrivalCatalogueTest1 = toArrivalCatalogue lc1;;
+
+
+
+////------TASK 3------////
+
+//---2---//
+// In this case, list.fold would be a good choice as it is possible to set the initial value to 0
+// which can be seen as false. If any element of a route has an identical flight ID then 1 is added
+// and as soon as that happens the result will be true. Hence, it is not needed to e.g. exit the function
+// when a constraint is met
+let ninRoute f = function
+    | r -> 0 < List.fold (fun acc (f', _) -> if f=f' then acc+1 else acc ) 0 r;;
+    
+// Should return true since "DL 189" does incur in route r1:
+let ninRouteTest1 = ninRoute "DL 189" r1;; 
+
+// Should return false since "DL 189" does not incur in route r2:
+let ninRouteTest2 = ninRoute "DL 189" r2;; 
+
+// Should return true since "DL 124" does incur in route r1
+let ninRouteTest3 = ninRoute "DL 124" r1;; 
+
+// Should return true since "DL 124" does incur in route r2
+let ninRouteTest4 = ninRoute "DL 124" r2;;
+
+// Should return false since "DL 125" does not incur in route r2
+let ninRouteTest5 = ninRoute "DL 125" r2;;
+
+
+
+//---3---//
+// List.exists is a fitting function for this problem. It is checked whether the corresponding list of a luggage ID 
+// has a flight equal to the argument. It is a boolean question, we just need to know if it exists which makes this 
+// function fitting. Instead of making nwithFlight recursive, one could perhaps also wrap the line.exists into a
+// List.fold function.
+let rec nwithFlight f lc =
+    match lc with
+    | (lid,r)::rest -> if List.exists (fun (f',_) -> f=f') r then lid::(nwithFlight f rest) else (nwithFlight f rest)
+    | _ -> [];;
+    
+
+//// withFlight tests:
+// Should return with ["DL 016-914"; "SK 222-142"] as these are the luggages traveling with flight "DL 124":
+let nwithFlightTest1 = nwithFlight "DL 124" lc1;; 
+
+// Should return with ["SK 222-142"] as this is the only luggage traveling with flight "SK 208":
+let nwithFlightTest2 = nwithFlight "SK 208" lc1;; 
+
+// Should return with [] as no luggages from luggage catalogue lc1 are traveling with flight "SK 209":
+let nwithFlightTest3 = nwithFlight "SK 209" lc1;;
+
+// Should return with ["DL 016-914"] as this is the only luggage traveling with flight "SN 733":
+let nwithFlightTest4 = nwithFlight "SN 733" lc1;;
+
