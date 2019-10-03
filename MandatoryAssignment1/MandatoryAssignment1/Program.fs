@@ -17,7 +17,8 @@ module MandatoryAssignment1 =
     type Airport = string
 
     type Route = (Flight * Airport) list
-    type LuggageCatalogue = (Lid * Route) list;;
+    type LuggageCatalogue = (Lid * Route) list
+    type ArrivalCatalogue = (Airport * Lid list) list;; //ArrivalCatalogue type from question 4
 
     
 
@@ -51,6 +52,7 @@ module MandatoryAssignment1 =
     // Declare a function inRoute: Flight -> Route -> bool, 
     // that decides whether a given ﬂight occurs in a route.
     
+    //MISTAKE!!!! SHOULD ONLY TAKE A FLIGHT AS AN INPUT
     let rec inRoute f = function
         | (l', r'::tail)::rest -> 
             let (f', _) = r'
@@ -85,9 +87,22 @@ module MandatoryAssignment1 =
         // withFlight "SK 208" lc1;; ~> val it : string list = ["SK 222-142"]
         // withFlight "SK 209" lc1;; ~> val it : string list = []
         // withFlight "SN 733" lc1;; ~> val it : string list = ["DL 016-914"]
-    
-    
 
+        //4
+        // An arrival catalogue associates with every airport, identiﬁcations of all pieces of 
+        // luggage that should arrive at the airport. This is captured by the type declaration:
 
-    
+        // type ArrivalCatalogue = (Airport * Lid list) list
+        
+        //The following arrival catalogue is derived from the luggage catalogue appearing on the previous page:
+        
+        let ac = [
+            ("ATL", ["DL 016-914"; "SK 222-142"]); 
+            ("BRU", ["DL 016-914"; "SK 222-142"]); 
+            ("JFK", ["SK 222-142"]); 
+            ("CPH", ["DL 016-914"])
+            ];;
 
+        // Declare a function extend: Lid*Route*ArrivalCatalogue -> ArrivalCalalogue so that 
+        // extend(lid,r,ac) is the arrival catalogue obtained by extending ac with the information 
+        // that lid will arrive at each airport contained in route r. 
