@@ -183,7 +183,7 @@ let extendTest1 = extend("DL 016-915",r2,ac1);;
 // ("JFK", ["SK 222-142"]);
 // ("CPH", ["DL 016-914"])]
 // Since luggage "DL 016-914" is already on route r1 and there will be no changes to ac1
-let extendTest2 = extend("DL 016-914",r1,ac1);; 
+let extendTest2 = extend("DL 016-914",r1,ac1);; a
 
 
 // Should return:
