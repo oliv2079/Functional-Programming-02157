@@ -1,0 +1,33 @@
+//s164209
+Task 1
+1.1 You need to provide an argument for why this type is the most general that can possible be. Without any restrictions the most general type would be 'a1 -> 'a2 -> 'a3, but the definition of collect imposes some restrictions, so e.g the type 'a1 has to be some function type, and the result 'a3 has to be a list type
+1.2 On track, but your notation is incorrect. E.g [f(1,3)] is a list with one element, namely  [[1;2;3]] and you use this list as a head of another list, implying the final list is a list of lists of list. Not exactly what you want. Similarly, you have to write [1;2;3]@f(4,7) you cant write [1;2;3;f(4,7)] (it doesn't make any sense, that would be [1;2;3;[4;5;6;7]] but lists elements have to be the same type.)
+1.3 The given type is correct. There is no argument why this is so, or why this is an instance of the general type for collect.
+
+I'll suggest you redo exercises 4.16-4.18 about type inference. You are always welcome to ask question about former exercises at the classes. 
+
+Task 2
+File should start with name and study number.
+
+q1 Nearly super. BUT the type is wrong. Your function has type 
+Lid -> LuggageCatalogue -> Route
+It was supposed to have type
+Lid*LuggageCatalogue -> Route
+q2 good. You can avoid the "let" in the case. Instead of
+    | r'::rest -> 
+        let (f', _) = r'
+		if f'=f...
+you can write 
+    | (f',_)::rest -> if f'=f... 
+
+q3 correct, but you can simplify a lot by using inRoute when matching.
+q4 good attempt. You could try to improve the readability :-) There is not enough cases, so you are not always able to add a new airport.
+q5 acc should be empty from the start, you give the value [("",[])). Your test fail because of the bug in extend.
+
+Task 3
+q2 Correct, and nicely explained. But it would be much simpler to use List.exists.
+q3 Correct, and nicely explained. But it would be much simpler to use List.fold in combination with ninRoute.
+
+Overall nice work. You should try to simplify the code to improve readability.
+
+Approved, Maliina Hammeken
