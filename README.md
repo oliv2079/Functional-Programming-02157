@@ -11,7 +11,10 @@ Exercise 3 - Finished
     https://github.com/TorbenRahbekKoch/Functional-Programming-Using-FSharp
 
 Mandatory Assignment 1 - Done
+
 Mandatory Assignment 2 - Done
+
 Mandatory Assignment 3 - Done
+
 Mandatory Assignment 4 - Done
 
