@@ -10,7 +10,6 @@ type ExprTree =
     | App of string * ExprTree list
 
 //Exercise 1
-
 let valTree1 = Let("x", Const 5, Sum(Ident "x", Ident "x") )
 let valTree2 = Let("x", Const 5, Sum(Ident "x", Sum(Ident "z", Ident "x") ) )
 let valTree3 = Let("x", Sum(Const 9, Ident "y"), Sum(Const 90, Ident "x") )
